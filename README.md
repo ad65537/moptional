@@ -86,10 +86,10 @@ mopt::moptional<int> TryTransformData() {
 Optional error handling is common among functional programming langauges and frameworks. For instance, a similar scenario to the above in Scala:
 
 ```
-val optNoneList : Option[List[Int]] = None
+val optNoneList : Option[Int] = None
 val alsoNone = optNoneList.map(x => x*2)
 
-val optSomeList : Option[List[Int]] = Some(1)
+val optSomeList : Option[Int] = Some(1)
 val doubledInt = optSomeInt.map(x => x*2) //Some(2)
 ```
 
