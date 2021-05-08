@@ -33,3 +33,5 @@
 
 # App-specific 
 /build
+/.cache
+/compile_commands.json 

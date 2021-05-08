@@ -4,19 +4,25 @@ cmake_minimum_required(VERSION 3.15)
 
 include(CTest)
 
-add_executable(simple_test)
+function(add_exec name)
+  add_executable(${name})
 
-target_sources(simple_test
-    PRIVATE
-    simple.cpp)
+  target_sources(${name}
+      PRIVATE
+      ${name}.cpp)
 
-target_include_directories(simple_test
+  target_include_directories(${name}
+      PRIVATE 
+      $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>/include
+      $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>)
+
+  target_compile_features(${name}
     PRIVATE 
-    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>/include
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>)
+    cxx_std_17)
+endfunction()
 
-target_compile_features(simple_test
-  PRIVATE 
-  cxx_std_17)
+add_exec(simple)
+add_exec(stl_algos)
 
-add_test(NAME Simple COMMAND simple_test)
+add_test(NAME Simple COMMAND simple)
+add_test(NAME STL_Algorithms COMMAND stl_algos)

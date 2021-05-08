@@ -72,8 +72,8 @@ class MoptIterator {
   using pointer = typename Traits::pointer;
 
   // These should be the case whether using T* or an iterator
-  static_assert(std::is_same_v<reference, dereference_type&>);
-  static_assert(std::is_same_v<pointer, dereference_type*>);
+  static_assert(std::is_same_v<reference, dereference_type&> || std::is_same_v<reference, const dereference_type&>);
+  static_assert(std::is_same_v<pointer, dereference_type*> || std::is_same_v<pointer, const dereference_type*>);
 
   /* TODO This will only work for container-like T when T's iterators are
    default constructible right now? We could have an optional around this,
@@ -155,7 +155,14 @@ class Moptional {
       }
     } else {
       // Doesn't matter if we are nullopt or not!
-      return MoptIterator<T, T*>();
+      if (internal_) {
+        // Give a pointer past the memory
+        // owned by the internal optional
+        return MoptIterator<T, T*>(
+            (&*internal_) + 1);
+      } else {
+        return MoptIterator<T, T*>();
+      }
     }
   }
 
