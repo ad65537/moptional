@@ -79,7 +79,7 @@ mopt::moptional<int> TryTransformData() {
 ```
 
 
-#Reasoning
+# Reasoning
 
 Optional error handling is common among functional programming langauges and frameworks. For instance, a similar scenario to the above in Scala:
 
