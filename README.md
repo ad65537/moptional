@@ -2,7 +2,7 @@
 
 This header-only C++ library provides an alternative to `std::optional` which provides a better monadic interface for functional-style iteration and error handling. The `mopt::moptional` (monadic optional) is a wrapper around `std::optional` which adds STL-compatible iterators, so that STL algorithms such as `std::accumulate` or `std::transform` can be executed over the data structure. If the moptional contains a `std::nullopt`, the iterators will simulate an empty container. Furthermore, if the type paramter `T` of the optional is container-like, iterators of the moptional will wrap `T::iterator_type`.
 
-#Example Code
+# Example Code
 
 Monadic error handling with std::optional:
 ```
