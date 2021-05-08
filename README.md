@@ -6,7 +6,7 @@ This header-only C++ library provides an alternative to `std::optional` which pr
 
 # Example Code
 
-Monadic error handling with std::optional:
+Monadic error handling with `std::optional`:
 ```
 std::optional<std::vector<int>> PossiblyFailingFunction() {
   ...
@@ -31,7 +31,7 @@ std::optional<std::vector<int>> TryTransformData() {
 }
 ```
 
-Versus monadic error handling with mopt::moptional:
+Versus monadic error handling with `mopt::moptional`:
 
 ```
 mopt::moptional<std::vector<int>> PossibleFailingFunction() {
