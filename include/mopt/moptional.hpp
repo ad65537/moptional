@@ -154,7 +154,6 @@ class Moptional {
         return MoptIterator<T, typename details::IteratorType<T>::Type>();
       }
     } else {
-      // Doesn't matter if we are nullopt or not!
       if (internal_) {
         // Give a pointer past the memory
         // owned by the internal optional
